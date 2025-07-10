@@ -28,11 +28,15 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            overflow-x: hidden;
+            width: 100vw;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: var(--dark-color);
-            overflow-x: hidden;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
@@ -102,6 +106,7 @@
             backdrop-filter: blur(20px);
             box-shadow: var(--shadow);
             transition: var(--transition);
+            width: 100vw;
         }
 
         .header.scrolled {
@@ -114,6 +119,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 16px 0;
+            position: relative;
         }
 
         .logo {
@@ -136,6 +142,7 @@
             display: flex;
             list-style: none;
             gap: 32px;
+            transition: max-height 0.4s ease;
         }
 
         .nav-links a {
@@ -172,6 +179,60 @@
             font-size: 24px;
             color: var(--dark-color);
             cursor: pointer;
+        }
+
+        /* Responsive Nav Fixes */
+        @media (max-width: 768px) {
+            .header {
+                position: fixed;
+                width: 100vw;
+                left: 0;
+                right: 0;
+                top: 0;
+                z-index: 1000;
+            }
+            .container {
+                padding-top: 70px;
+            }
+            .nav-links {
+                flex-direction: column;
+                gap: 20px;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                max-height: 0;
+                overflow: hidden;
+                padding: 0 24px;
+                box-shadow: var(--shadow);
+                border-radius: 0 0 var(--border-radius) var(--border-radius);
+                display: flex;
+            }
+            .nav-links.active {
+                max-height: 500px;
+                padding: 24px;
+                display: flex;
+            }
+            .mobile-menu {
+                display: block;
+                z-index: 1100;
+                position: relative;
+                background: none;
+                outline: none;
+                border: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding-top: 70px;
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+            .section {
+                padding: 60px 0 0 0;
+            }
         }
 
         /* Hero Section */
@@ -690,28 +751,6 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 24px;
-                box-shadow: var(--shadow);
-                border-radius: 0 0 var(--border-radius) var(--border-radius);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
             .product-selector {
                 grid-template-columns: 1fr;
                 gap: 12px;
@@ -732,14 +771,6 @@
         }
 
         @media (max-width: 480px) {
-            .container {
-                padding: 0 16px;
-            }
-
-            .section {
-                padding: 60px 0;
-            }
-
             .stats-grid {
                 grid-template-columns: 1fr;
             }
@@ -936,7 +967,6 @@
         </div>
     </footer>
 
-   <!-- ...rest of the HTML stays the same up to the script tag... -->
     <script>
         // Centralized Product Data with Images
         const PRODUCTS = [
@@ -1090,6 +1120,13 @@
             initializeProductSelectors();
             updateRemoveButtons();
             updateTotal();
+        });
+
+        // Ensure nav closes after clicking a link (for mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function () {
+                document.getElementById('navLinks').classList.remove('active');
+            });
         });
 
         // Product order function
