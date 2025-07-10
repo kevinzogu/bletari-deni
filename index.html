@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bletaria "Zogu" - Mjaltë Natyral Premium</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .nav-links a:hover {
+            transform: translateY(-2px);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .mobile-menu {
+            display: none;
+            background: white;
+            color: #f39c12;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 50%, #d35400 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-100px); }
+        }
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease-out;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+        .cta-button {
+            background: white;
+            color: #f39c12;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            border-radius: 2px;
+        }
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 100%);
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .stat:hover {
+            transform: translateY(-5px);
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #f39c12;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-top: 0.5rem;
+        }
+        /* Products Section */
+        .products {
+            background: white;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .product-image {
+            height: 200px;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+        .product-info {
+            padding: 1.5rem;
+        }
+        .product-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        .product-description {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+        .order-btn {
+            background: #f39c12;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .order-btn:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+        }
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+        }
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #f39c12;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(5px);
+        }
+        .contact-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #f39c12;
+        }
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #f39c12;
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.9);
+            font-size: 1rem;
+        }
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background: #f39c12;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+        }
+        .submit-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        /* Success Message */
+        .success-message {
+            background: #27ae60;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        .error-message {
+            background: #e74c3c;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #f39c12;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .mobile-menu {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">🐝 Bletaria "Zogu"</a>
+            <ul class="nav-links">
+                <li><a href="#home">Ballina</a></li>
+                <li><a href="#about">Rreth Nesh</a></li>
+                <li><a href="#products">Produktet</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+            <button class="mobile-menu" onclick="toggleMenu()">☰</button>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Mjaltë Natyral Premium</h1>
+            <p>Nga ferma jonë familjare në tryezën tuaj - mjaltë i pastër, i papërpunuar dhe i shijshëm</p>
+            <a href="#products" class="cta-button">Shikoni Produktet</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Rreth Nesh</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Bletaria "Zogu" është një ndërmarrje familjare me traditë të gjatë në bletari. Për më shumë se 20 vjet, ne kemi qenë të përkushtuar ndaj artit të bletarisë dhe prodhimit të mjaltit të cilësisë së lartë.</p>
+                    
+                    <p>Ferma jonë ndodhet në një zonë të privilegjuar në Shqipëri, ku bletët tona ushqehen nga luledielli i egër dhe bimësia e pasur e maleve. Çdo kavanoz mjalti është dëshmi e angazhimit tonë ndaj cilësisë, pastërtisë dhe mirëqenies së bletëve tona të çmuara.</p>
+                    
+                    <p>Ne zbatojmë praktika të qëndrueshme të bletarisë që respektojnë sjelljen natyrore të bletëve dhe prodhojnë mjaltë me shije unike që reflektojnë terroirin vendor.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <div class="stat-number">80+</div>
+                        <div class="stat-label">Koshere Aktive</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Vite Përvojë</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">1500+</div>
+                        <div class="stat-label">Kg në Vit</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Natyral & i Pastër</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Produktet Tona</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">🍯</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Mjaltë Luledielli</h3>
+                        <p class="product-description">Mjalti ynë kryesor nga burime të ndryshme të luledielli të egër, me profil shijeje kompleks dhe të këndshëm.</p>
+                        <div class="product-price">800 Lekë / 450g</div>
+                        <button class="order-btn" onclick="orderProduct('Mjaltë Luledielli')">Porosit Tani</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">🌻</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Mjaltë Lulediellit</h3>
+                        <p class="product-description">Mjaltë i lehtë, i artë me shije të butë dhe teksturë të lëmuar, i përsosur për përdorim të përditshëm.</p>
+                        <div class="product-price">900 Lekë / 450g</div>
+                        <button class="order-btn" onclick="orderProduct('Mjaltë Lulediellit')">Porosit Tani</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">🌿</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Mjaltë Trifoje</h3>
+                        <p class="product-description">I ëmbël dhe delikat me notë lulore subtile, ideal për çaj dhe pjekje.</p>
+                        <div class="product-price">850 Lekë / 450g</div>
+                        <button class="order-btn" onclick="orderProduct('Mjaltë Trifoje')">Porosit Tani</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">🥜</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Mjaltë Kastanje</h3>
+                        <p class="product-description">Mjaltë me ngjyrë të errët dhe shije të pasur, i përsosur për ata që preferojnë shije më intense.</p>
+                        <div class="product-price">1000 Lekë / 450g</div>
+                        <button class="order-btn" onclick="orderProduct('Mjaltë Kastanje')">Porosit Tani</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">🍯</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Propolis</h3>
+                        <p class="product-description">Propolis natyral me veti terapeutike, i përdorur tradicionalisht për forcimin e imunitetit.</p>
+                        <div class="product-price">1200 Lekë / 30ml</div>
+                        <button class="order-btn" onclick="orderProduct('Propolis')">Porosit Tani</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">🎁</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Set Dhuratë</h3>
+                        <p class="product-description">Paketë e bukur me përzgjedhjen e mjaltëve tona më të mirë, e përsosur për dhurimin.</p>
+                        <div class="product-price">2500 Lekë / Set</div>
+                        <button class="order-btn" onclick="orderProduct('Set Dhuratë')">Porosit Tani</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Na Kontaktoni</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informacione Kontakti</h3>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div>
+                            <strong>Adresa:</strong><br>
+                            Fshat [Emri i Fshatit]<br>
+                            Bashkia [Emri i Bashkisë], Shqipëri
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <div>
+                            <strong>Telefoni:</strong><br>
+                            +355 69 XXX XXXX
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <div>
+                            <strong>Email:</strong><br>
+                            info@bletariazogu.al
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🕒</span>
+                        <div>
+                            <strong>Orari i Vizitës:</strong><br>
+                            E Hënë - E Premte: 9:00-17:00<br>
+                            E Shtunë: 9:00-15:00<br>
+                            (Vetëm me takim)
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="success-message" id="successMessage">
+                        Mesazhi juaj u dërgua me sukses! Do t'ju kontaktojmë së shpejti.
+                    </div>
+                    <div class="error-message" id="errorMessage">
+                        Ju lutemi plotësoni të gjitha fushat.
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Emri</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefoni</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="product">Produkti që ju intereson</label>
+                        <select id="product" name="product">
+                            <option value="">Zgjidhni produktin</option>
+                            <option value="Mjaltë Luledielli">Mjaltë Luledielli</option>
+                            <option value="Mjaltë Lulediellit">Mjaltë Lulediellit</option>
+                            <option value="Mjaltë Trifoje">Mjaltë Trifoje</option>
+                            <option value="Mjaltë Kastanje">Mjaltë Kastanje</option>
+                            <option value="Propolis">Propolis</option>
+                            <option value="Set Dhuratë">Set Dhuratë</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mesazhi</label>
+                        <textarea id="message" name="message" placeholder="Shkruani mesazhin tuaj këtu..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">Dërgo Mesazhin</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Bletaria "Zogu". Të gjitha të drejtat e rezervuara. | Bërë me 🍯 dhe dashuri</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    const navLinks = document.querySelector('.nav-links');
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Product order function
+        function orderProduct(productName) {
+            const productSelect = document.getElementById('product');
+            productSelect.value = productName;
+            
+            // Scroll to contact form
+            document.getElementById('contact').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Focus on message field
+            setTimeout(() => {
+                document.getElementById('message').focus();
+                document.getElementById('message').value = `Përshëndetje, jam i interesuar për produktin: ${productName}. Ju lutemi më jepni më shumë informacione dhe çmimet.`;
+            }, 1000);
+        }
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form elements
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const product = document.getElementById('product').value;
+            const message = document.getElementById('message').value.trim();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Hide previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Validate required fields
+            if (!name || !email || !message) {
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errorMessage.textContent = 'Ju lutemi vendosni një email të vlefshëm.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            // Simulate form submission
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Duke dërguar...';
+            
+            // Create mailto link as fallback
+            const mailtoLink = `mailto:info@bletariazogu.al?subject=Porosi nga ${name}&body=Emri: ${name}%0D%0AEmail: ${email}%0D%0ATelefoni: ${phone}%0D%0AProdukti: ${product}%0D%0A%0D%0AMesazhi:%0D%0A${message}`;
+            
+            setTimeout(() => {
+                // Show success message
+                successMessage.style.display = 'block';
+                
+                // Open mailto link
+                window.location.href = mailtoLink;
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Dërgo Mesazhin';
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }, 2000);
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(243, 156, 18, 0.95)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #f39c12 0%, #e67e22 100%)';
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (!nav.contains(e.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Add loading animation for product cards
+        window.addEventListener('load', function() {
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px)
+					card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>
