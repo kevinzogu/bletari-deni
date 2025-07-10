@@ -21,18 +21,15 @@
             --border-radius: 16px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         html, body {
             overflow-x: hidden;
             width: 100vw;
         }
-
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
@@ -40,14 +37,11 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
-
-        /* Utility Classes */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
-
         .btn {
             display: inline-flex;
             align-items: center;
@@ -64,38 +58,30 @@
             font-size: 16px;
             line-height: 1.5;
         }
-
         .btn-primary {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: var(--white);
         }
-
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-hover);
         }
-
         .btn-success {
             background: linear-gradient(135deg, var(--success-color) 0%, #2ECC71 100%);
             color: var(--white);
         }
-
         .btn-success:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(39, 174, 96, 0.3);
         }
-
         .btn-danger {
             background: linear-gradient(135deg, var(--error-color) 0%, #C0392B 100%);
             color: var(--white);
         }
-
         .btn-danger:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
         }
-
-        /* Header */
         .header {
             position: fixed;
             top: 0;
@@ -108,12 +94,10 @@
             transition: var(--transition);
             width: 100vw;
         }
-
         .header.scrolled {
             background: rgba(255, 255, 255, 0.98);
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
-
         .nav {
             display: flex;
             align-items: center;
@@ -121,7 +105,6 @@
             padding: 16px 0;
             position: relative;
         }
-
         .logo {
             display: flex;
             align-items: center;
@@ -131,20 +114,17 @@
             color: var(--primary-color);
             text-decoration: none;
         }
-
         .logo img {
             width: 40px;
             height: 40px;
             border-radius: 50%;
         }
-
         .nav-links {
             display: flex;
             list-style: none;
             gap: 32px;
             transition: max-height 0.4s ease;
         }
-
         .nav-links a {
             color: var(--dark-color);
             text-decoration: none;
@@ -152,11 +132,9 @@
             position: relative;
             transition: var(--transition);
         }
-
         .nav-links a:hover {
             color: var(--primary-color);
         }
-
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -167,11 +145,9 @@
             background: var(--primary-color);
             transition: var(--transition);
         }
-
         .nav-links a:hover::after {
             width: 100%;
         }
-
         .mobile-menu {
             display: none;
             background: none;
@@ -180,19 +156,18 @@
             color: var(--dark-color);
             cursor: pointer;
         }
-
         /* Responsive Nav Fixes */
+        @media (max-width: 900px) {
+            .container {
+                padding: 0 12px;
+            }
+        }
         @media (max-width: 768px) {
             .header {
-                position: fixed;
                 width: 100vw;
-                left: 0;
-                right: 0;
-                top: 0;
-                z-index: 1000;
             }
             .container {
-                padding-top: 70px;
+                padding: 0 12px;
             }
             .nav-links {
                 flex-direction: column;
@@ -222,19 +197,59 @@
                 outline: none;
                 border: none;
             }
+            .hero-content h1 {
+                font-size: 32px;
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .product-selector {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                text-align: center;
+            }
+            .submit-options {
+                grid-template-columns: 1fr;
+            }
+            .about-image img {
+                height: 200px;
+            }
         }
-
         @media (max-width: 480px) {
             .container {
-                padding-top: 70px;
-                padding-left: 8px;
-                padding-right: 8px;
+                padding: 0 4px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-image img {
+                height: 150px;
             }
             .section {
-                padding: 60px 0 0 0;
+                padding: 38px 0 0 0;
+            }
+            .hero-content h1 {
+                font-size: 22px;
+            }
+            .hero-content p {
+                font-size: 16px;
+            }
+            .product-info {
+                padding: 16px;
             }
         }
-
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -244,7 +259,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .hero::before {
             content: '';
             position: absolute;
@@ -255,12 +269,10 @@
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="60" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="60" cy="40" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
             animation: float 30s infinite linear;
         }
-
         @keyframes float {
             0% { transform: translate(0, 0); }
             100% { transform: translate(-100px, -100px); }
         }
-
         .hero-content {
             position: relative;
             z-index: 2;
@@ -269,22 +281,19 @@
             max-width: 800px;
             margin: 0 auto;
         }
-
         .hero h1 {
-            font-size: clamp(48px, 8vw, 72px);
+            font-size: clamp(32px, 8vw, 72px);
             font-weight: 700;
             margin-bottom: 24px;
             line-height: 1.2;
             animation: slideInUp 1s ease-out;
         }
-
         .hero p {
-            font-size: clamp(18px, 4vw, 24px);
+            font-size: clamp(16px, 4vw, 24px);
             margin-bottom: 32px;
             opacity: 0.95;
             animation: slideInUp 1s ease-out 0.2s both;
         }
-
         .hero .btn {
             animation: slideInUp 1s ease-out 0.4s both;
             font-size: 18px;
@@ -293,7 +302,6 @@
             color: var(--primary-color);
             font-weight: 600;
         }
-
         @keyframes slideInUp {
             from {
                 opacity: 0;
@@ -304,36 +312,29 @@
                 transform: translateY(0);
             }
         }
-
-        /* Section Styles */
         .section {
             padding: 80px 0;
             position: relative;
         }
-
         .section-title {
             text-align: center;
-            font-size: clamp(32px, 6vw, 48px);
+            font-size: clamp(28px, 6vw, 48px);
             font-weight: 700;
             margin-bottom: 16px;
             color: var(--dark-color);
         }
-
         .section-subtitle {
             text-align: center;
             font-size: 18px;
             color: #7F8C8D;
-            margin-bottom: 64px;
+            margin-bottom: 48px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
-
-        /* About Section */
         .about {
             background: var(--white);
         }
-
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -341,75 +342,62 @@
             align-items: center;
             margin-bottom: 64px;
         }
-
         .about-text {
             font-size: 18px;
             line-height: 1.8;
         }
-
         .about-text p {
             margin-bottom: 24px;
             color: #5D6D7E;
         }
-
         .about-image {
             position: relative;
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
         }
-
         .about-image img {
             width: 100%;
-            height: 400px;
+            height: 300px;
             object-fit: cover;
         }
-
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 24px;
         }
-
         .stat-card {
             background: var(--white);
-            padding: 40px 32px;
+            padding: 32px 16px;
             border-radius: var(--border-radius);
             text-align: center;
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid #F8F9FA;
         }
-
         .stat-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-hover);
         }
-
         .stat-number {
-            font-size: 48px;
+            font-size: 38px;
             font-weight: 700;
             color: var(--primary-color);
             display: block;
         }
-
         .stat-label {
-            font-size: 16px;
+            font-size: 15px;
             color: #7F8C8D;
             margin-top: 8px;
         }
-
-        /* Products Section */
         .products {
             background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
         }
-
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 24px;
         }
-
         .product-card {
             background: var(--white);
             border-radius: var(--border-radius);
@@ -417,363 +405,284 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid #F1F2F6;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-        }
-
         .product-image {
             position: relative;
-            height: 250px;
+            height: 180px;
             overflow: hidden;
         }
-
         .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
-
         .product-card:hover .product-image img {
             transform: scale(1.05);
         }
-
         .product-info {
-            padding: 32px;
+            padding: 18px 16px 24px 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-
         .product-title {
-            font-size: 24px;
+            font-size: 19px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             color: var(--dark-color);
         }
-
         .product-description {
             color: #7F8C8D;
-            margin-bottom: 24px;
-            line-height: 1.6;
+            margin-bottom: 16px;
+            line-height: 1.5;
+            font-size: 15px;
         }
-
         .product-price {
-            font-size: 28px;
+            font-size: 21px;
             font-weight: 700;
             color: var(--primary-color);
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
-
         /* Contact Section */
         .contact {
             background: linear-gradient(135deg, var(--dark-color) 0%, #34495E 100%);
             color: var(--white);
         }
-
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 64px;
+            gap: 48px;
         }
-
         .contact-info h3 {
-            font-size: 32px;
-            margin-bottom: 32px;
+            font-size: 28px;
+            margin-bottom: 24px;
             color: var(--accent-color);
         }
-
         .contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 16px;
-            margin-bottom: 24px;
-            padding: 24px;
+            gap: 12px;
+            margin-bottom: 18px;
+            padding: 16px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: var(--border-radius);
             transition: var(--transition);
             cursor: pointer;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
         .contact-item:hover {
             background: rgba(255, 255, 255, 0.15);
             transform: translateX(8px);
         }
-
         .contact-icon {
-            font-size: 24px;
+            font-size: 22px;
             color: var(--accent-color);
-            min-width: 24px;
+            min-width: 22px;
         }
-
         .contact-form {
             background: rgba(255, 255, 255, 0.1);
-            padding: 40px;
+            padding: 24px;
             border-radius: var(--border-radius);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-
         .form-group {
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
-
         .form-label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 7px;
             color: var(--accent-color);
             font-weight: 500;
-            font-size: 16px;
+            font-size: 15px;
         }
-
         .form-input {
             width: 100%;
-            padding: 16px;
+            padding: 12px;
             border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: var(--border-radius);
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             color: var(--white);
-            font-size: 16px;
+            font-size: 15px;
             transition: var(--transition);
             backdrop-filter: blur(10px);
         }
-
         .form-input:focus {
             outline: none;
             border-color: var(--accent-color);
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.13);
         }
-
         .form-input::placeholder {
             color: rgba(255, 255, 255, 0.7);
         }
-
         .form-textarea {
-            height: 120px;
+            height: 80px;
             resize: vertical;
         }
-
         /* Enhanced Order Section */
         .order-section {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
-            padding: 32px;
+            padding: 18px;
             border-radius: var(--border-radius);
-            margin-bottom: 32px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
             backdrop-filter: blur(20px);
         }
-
         .order-section h4 {
             color: var(--accent-color);
-            margin-bottom: 24px;
-            font-size: 20px;
+            margin-bottom: 14px;
+            font-size: 17px;
             font-weight: 600;
         }
-
         .product-selector {
             display: grid;
-            grid-template-columns: 2fr 120px auto;
-            gap: 16px;
+            grid-template-columns: 2fr 100px auto;
+            gap: 10px;
             align-items: center;
-            margin-bottom: 16px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 10px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.12);
             border-radius: var(--border-radius);
             transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
-
         .product-selector:hover {
             background: rgba(255, 255, 255, 0.15);
             transform: translateY(-2px);
         }
-
         .product-select {
-            padding: 12px 16px;
+            padding: 10px 12px;
             border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: var(--border-radius);
             background: rgba(255, 255, 255, 0.1);
             color: var(--white);
-            font-size: 16px;
+            font-size: 14px;
             transition: var(--transition);
             backdrop-filter: blur(10px);
         }
-
         .product-select:focus {
             outline: none;
             border-color: var(--accent-color);
             background: rgba(255, 255, 255, 0.15);
         }
-
         .product-select option {
             background: var(--dark-color);
             color: var(--white);
         }
-
         .quantity-input {
             text-align: center;
-            padding: 12px;
+            padding: 10px;
             border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: var(--border-radius);
             background: rgba(255, 255, 255, 0.1);
             color: var(--white);
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             transition: var(--transition);
         }
-
         .quantity-input:focus {
             outline: none;
             border-color: var(--accent-color);
             background: rgba(255, 255, 255, 0.15);
         }
-
         .btn-remove {
-            padding: 12px 16px;
-            font-size: 14px;
+            padding: 8px 12px;
+            font-size: 13px;
             border-radius: var(--border-radius);
             white-space: nowrap;
         }
-
         .btn-add {
             width: 100%;
-            margin-bottom: 24px;
-            padding: 16px;
-            font-size: 16px;
+            margin-bottom: 14px;
+            padding: 12px;
+            font-size: 15px;
             font-weight: 600;
         }
-
         .total-section {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            padding: 24px;
+            padding: 15px;
             border-radius: var(--border-radius);
-            margin-bottom: 24px;
+            margin-bottom: 12px;
             text-align: center;
             box-shadow: var(--shadow);
         }
-
         .total-price {
-            font-size: 32px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--white);
         }
-
         .order-summary {
             background: rgba(255, 255, 255, 0.1);
-            padding: 24px;
+            padding: 14px;
             border-radius: var(--border-radius);
-            margin-bottom: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.13);
             backdrop-filter: blur(10px);
             display: none;
         }
-
         .order-summary.show {
             display: block;
             animation: slideInUp 0.3s ease-out;
         }
-
         .order-summary h5 {
             color: var(--accent-color);
-            margin-bottom: 16px;
-            font-size: 18px;
+            margin-bottom: 10px;
+            font-size: 15px;
             font-weight: 600;
         }
-
         .order-summary-content {
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: 13px;
+            line-height: 1.4;
             color: rgba(255, 255, 255, 0.9);
         }
-
         .order-summary-content strong {
             color: var(--white);
-            font-size: 18px;
+            font-size: 15px;
         }
-
         .submit-options {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            gap: 10px;
         }
-
         .btn-whatsapp {
             background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
             color: var(--white);
             font-weight: 600;
         }
-
         .btn-whatsapp:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
         }
-
-        /* Message Styles */
         .message {
-            padding: 16px 24px;
+            padding: 10px 14px;
             border-radius: var(--border-radius);
-            margin-bottom: 24px;
+            margin-bottom: 12px;
             font-weight: 500;
             display: none;
+            font-size: 14px;
         }
-
         .message.show {
             display: block;
             animation: slideInUp 0.3s ease-out;
         }
-
         .message-success {
             background: linear-gradient(135deg, var(--success-color) 0%, #2ECC71 100%);
             color: var(--white);
         }
-
         .message-error {
             background: linear-gradient(135deg, var(--error-color) 0%, #C0392B 100%);
             color: var(--white);
         }
-
-        /* Footer */
         .footer {
             background: var(--dark-color);
             color: var(--white);
             text-align: center;
-            padding: 32px 0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .product-selector {
-                grid-template-columns: 1fr;
-                gap: 12px;
-                text-align: center;
-            }
-
-            .submit-options {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
+            padding: 18px 0;
         }
     </style>
 </head>
@@ -811,20 +720,16 @@
         <div class="container">
             <h2 class="section-title">Rreth Nesh</h2>
             <p class="section-subtitle">Një traditë familjare e transmetuar nëpër breza, me përkushtim ndaj cilësisë dhe natyrës</p>
-            
             <div class="about-content">
                 <div class="about-text">
                     <p>Bletari "Deni" është një ndërmarrje familjare me traditë të gjatë në bletari. Për më shumë se 30 vjet, ne kemi qenë të përkushtuar ndaj artit të bletarisë dhe prodhimit të mjaltit të cilësisë së lartë.</p>
-                    
                     <p>Ferma jonë ndodhet në një zonë të privilegjuar në Shqipëri, ku bletët tona ushqehen nga bimësia e pasur e maleve. Çdo kavanoz mjalti është dëshmi e angazhimit tonë ndaj cilësisë, pastërtisë dhe mirëqenies së bletëve tona të çmuara.</p>
-                    
                     <p>Ne zbatojmë praktika të qëndrueshme të bletarisë që respektojnë sjelljen natyrore të bletëve dhe prodhojnë mjaltë me shije unike që reflektojnë terroirin vendor.</p>
                 </div>
                 <div class="about-image">
                     <img src="https://scontent.ftia18-1.fna.fbcdn.net/v/t39.30808-6/481958181_1174538850915919_7229320183490649847_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHQrSRWIyRrFJMLbUg-5HUDCDE5x_Go6e4IMTnH8ajp7uwRt3wT_phFX7UdgoLTAe1TUs8cOtCQM1fuknbmYB8e&_nc_ohc=aAO1ND36jEgQ7kNvwEeHjER&_nc_oc=AdlYC3MrPLk0NaE7nXY5XoMSgU_n3xNs-1t_YO4A6KrQrE6tb57WkFCZ7GXiUwYE9tY&_nc_zt=23&_nc_ht=scontent.ftia18-1.fna&_nc_gid=JL0ziPKnyL-2zoQFY7EzvA&oh=00_AfRW9vwvGF_VPLpm2KMUxV2ESltRZtyK0sYvXvCmYFVGCw&oe=68761B8C" alt="Bletari në natyrë">
                 </div>
             </div>
-
             <div class="stats-grid">
                 <div class="stat-card">
                     <span class="stat-number">330+</span>
@@ -851,7 +756,6 @@
         <div class="container">
             <h2 class="section-title">Produktet Tona</h2>
             <p class="section-subtitle">Një përzgjedhje e jashtëzakonshme produktesh nga bletët, të gjitha të natyrshme dhe cilësore</p>
-            
             <div class="products-grid" id="productsGrid">
                 <!-- Products will be dynamically generated here -->
             </div>
@@ -863,7 +767,6 @@
         <div class="container">
             <h2 class="section-title">Na Kontaktoni</h2>
             <p class="section-subtitle">Jemi këtu për t'ju ndihmuar me çdo pyetje ose porosi</p>
-            
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Informacione Kontakti</h3>
@@ -903,7 +806,6 @@
                         </div>
                     </div>
                 </div>
-
                 <form class="contact-form" id="contactForm">
                     <div class="message message-success" id="successMessage">
                         Porosia juaj u dërgua me sukses! Do t'ju kontaktojmë së shpejti.
@@ -911,46 +813,36 @@
                     <div class="message message-error" id="errorMessage">
                         Ju lutemi plotësoni të gjitha fushat e detyrueshme.
                     </div>
-                    
                     <div class="form-group">
                         <label class="form-label" for="name">Emri *</label>
                         <input type="text" id="name" name="name" class="form-input" required placeholder="Shkruani emrin tuaj">
                     </div>
-                    
                     <div class="form-group">
                         <label class="form-label" for="email">Email *</label>
                         <input type="email" id="email" name="email" class="form-input" required placeholder="email@example.com">
                     </div>
-                    
                     <div class="form-group">
                         <label class="form-label" for="phone">Telefoni</label>
                         <input type="tel" id="phone" name="phone" class="form-input" placeholder="+355 XX XXX XXXX">
                     </div>
-                    
                     <div class="order-section">
                         <h4>Produktet që dëshironi të porositni</h4>
-                        <div id="productSelectors">
-                            <!-- Product selectors will be dynamically generated here -->
-                        </div>
+                        <div id="productSelectors"></div>
                         <button type="button" class="btn btn-success btn-add" onclick="addProduct()">+ Shto Produkt Tjetër</button>
-                        
                         <div class="total-section">
                             <div class="total-price">
                                 Totali: <span id="totalAmount">0</span> Lekë
                             </div>
                         </div>
-
                         <div class="order-summary" id="orderSummary">
                             <h5>Përmbledhje e Porosisë:</h5>
                             <div class="order-summary-content" id="orderSummaryContent"></div>
                         </div>
                     </div>
-                    
                     <div class="form-group">
                         <label class="form-label" for="message">Mesazhi shtesë</label>
                         <textarea id="message" name="message" class="form-input form-textarea" placeholder="Shkruani ndonjë mesazh shtesë këtu..."></textarea>
                     </div>
-                    
                     <div class="submit-options">
                         <button type="button" class="btn btn-whatsapp" id="whatsappBtn" onclick="sendWhatsApp()">📱 WhatsApp</button>
                         <button type="submit" class="btn btn-primary" id="submitBtn">📧 Email</button>
@@ -959,16 +851,12 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Bletari "Deni". Të gjitha të drejtat e rezervuara. | Krijuar me dashuri dhe mjaltë 🍯</p>
         </div>
     </footer>
-
     <script>
-        // Centralized Product Data with Images
         const PRODUCTS = [
             {
                 name: 'Qumësht Blete',
@@ -1013,14 +901,10 @@
                 description: 'Propolis natyral me veti antibakteriale dhe terapeutike, i përdorur tradicionalisht për forcimin e imunitetit.'
             }
         ];
-
-        // Generate product prices object
         const productPrices = {};
         PRODUCTS.forEach(product => {
             productPrices[product.name] = product.price;
         });
-
-        // Generate Products Grid
         function generateProductsGrid() {
             const grid = document.getElementById('productsGrid');
             grid.innerHTML = PRODUCTS.map(product => `
@@ -1037,17 +921,12 @@
                 </div>
             `).join('');
         }
-
-        // Generate Product Options
         function generateProductOptions() {
-            return PRODUCTS.map(product => 
+            return PRODUCTS.map(product =>
                 `<option value="${product.name}" data-price="${product.price}">${product.name} - ${product.price.toLocaleString()} Lekë</option>`
             ).join('');
         }
-
-        // Create Product Selector
         function createProductSelector() {
-            // The remove button is always present, but we decide its visibility later
             return `
                 <div class="product-selector">
                     <select class="product-select" onchange="updateTotal()">
@@ -1059,38 +938,25 @@
                 </div>
             `;
         }
-
-        // Initialize
         function initializeProductSelectors() {
             const container = document.getElementById('productSelectors');
             container.innerHTML = createProductSelector();
         }
-
-        // Contact functions
         function openLocation() {
             window.open('https://maps.app.goo.gl/87EaCDrAxoEDvSxe6', '_blank');
         }
-
         function callPhone(number) {
             window.location.href = `tel:${number}`;
         }
-
         function sendEmail() {
             window.location.href = 'mailto:bletarideni@gmail.com';
         }
-
-        // Mobile menu toggle
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
         }
-
-        // Navigation
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu
             document.getElementById('mobileMenu').addEventListener('click', toggleMenu);
-
-            // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -1104,8 +970,6 @@
                     }
                 });
             });
-
-            // Header scroll effect
             window.addEventListener('scroll', function() {
                 const header = document.getElementById('header');
                 if (window.scrollY > 100) {
@@ -1114,32 +978,19 @@
                     header.classList.remove('scrolled');
                 }
             });
-
-            // Initialize everything
             generateProductsGrid();
             initializeProductSelectors();
             updateRemoveButtons();
             updateTotal();
         });
-
-        // Ensure nav closes after clicking a link (for mobile)
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function () {
-                document.getElementById('navLinks').classList.remove('active');
-            });
-        });
-
-        // Product order function
         function orderProduct(productName, price) {
             document.getElementById('contact').scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
-            
             setTimeout(() => {
                 const selectors = document.querySelectorAll('.product-select');
                 let added = false;
-                
                 for (let selector of selectors) {
                     if (!selector.value) {
                         selector.value = productName;
@@ -1148,19 +999,15 @@
                         break;
                     }
                 }
-                
                 if (!added) {
                     addProduct();
                     const newSelectors = document.querySelectorAll('.product-select');
                     newSelectors[newSelectors.length - 1].value = productName;
                     updateTotal();
                 }
-                
                 document.getElementById('message').focus();
-            }, 1000);
+            }, 700);
         }
-
-        // Add product
         function addProduct() {
             const container = document.getElementById('productSelectors');
             const newSelector = document.createElement('div');
@@ -1169,21 +1016,15 @@
             updateRemoveButtons();
             updateTotal();
         }
-
-        // Remove product
         function removeProduct(button) {
-            // Remove the product selector
             button.closest('.product-selector').remove();
             updateRemoveButtons();
             updateTotal();
         }
-
-        // Update remove buttons
         function updateRemoveButtons() {
             const selectors = document.querySelectorAll('.product-selector');
             selectors.forEach(selector => {
                 const removeBtn = selector.querySelector('.btn-remove');
-                // Always show the remove button if there is more than one selector
                 if (selectors.length > 1) {
                     removeBtn.style.display = 'block';
                 } else {
@@ -1191,32 +1032,24 @@
                 }
             });
         }
-
-        // Update total and summary
         function updateTotal() {
             let total = 0;
             const selectors = document.querySelectorAll('.product-selector');
             let orderItems = [];
-            
             selectors.forEach(selector => {
                 const productSelect = selector.querySelector('.product-select');
                 const quantityInput = selector.querySelector('.quantity-input');
-                
                 if (productSelect.value && quantityInput.value) {
                     const price = productPrices[productSelect.value] || 0;
                     const quantity = parseInt(quantityInput.value) || 0;
                     const subtotal = price * quantity;
                     total += subtotal;
-                    
                     orderItems.push(`${productSelect.value} x ${quantity} = ${subtotal.toLocaleString()} Lekë`);
                 }
             });
-            
             document.getElementById('totalAmount').textContent = total.toLocaleString();
-            
             const orderSummary = document.getElementById('orderSummary');
             const orderSummaryContent = document.getElementById('orderSummaryContent');
-            
             if (orderItems.length > 0) {
                 orderSummaryContent.innerHTML = orderItems.join('<br>') + `<br><br><strong>TOTALI: ${total.toLocaleString()} Lekë</strong>`;
                 orderSummary.classList.add('show');
@@ -1224,108 +1057,80 @@
                 orderSummary.classList.remove('show');
             }
         }
-
-        // Generate order summary for messages
         function generateOrderSummary() {
             const selectors = document.querySelectorAll('.product-selector');
             let orderItems = [];
             let total = 0;
-            
             selectors.forEach(selector => {
                 const productSelect = selector.querySelector('.product-select');
                 const quantityInput = selector.querySelector('.quantity-input');
-                
                 if (productSelect.value && quantityInput.value) {
                     const productName = productSelect.value;
                     const quantity = parseInt(quantityInput.value);
                     const price = productPrices[productName];
                     const subtotal = price * quantity;
-                    
                     orderItems.push(`${productName} x ${quantity} = ${subtotal.toLocaleString()} Lekë`);
                     total += subtotal;
                 }
             });
-            
             return orderItems.length === 0 ? '' : `\n\nPOROSIA:\n${orderItems.join('\n')}\n\nTOTALI: ${total.toLocaleString()} Lekë`;
         }
-
-        // Show message
         function showMessage(id, text, isError = false) {
             const message = document.getElementById(id);
             message.textContent = text;
             message.classList.add('show');
             setTimeout(() => message.classList.remove('show'), 5000);
         }
-
-        // Validate form
         function validateForm() {
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
-            
             if (!name || !email) {
                 showMessage('errorMessage', 'Ju lutemi plotësoni fushat e detyrueshme (Emri dhe Email).', true);
                 return false;
             }
-            
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 showMessage('errorMessage', 'Ju lutemi vendosni një email të vlefshëm.', true);
                 return false;
             }
-            
             const orderSummary = generateOrderSummary();
             if (!orderSummary) {
                 showMessage('errorMessage', 'Ju lutemi zgjidhni të paktën një produkt për t\'u porositur.', true);
                 return false;
             }
-            
             return true;
         }
-
-        // Send WhatsApp
         function sendWhatsApp() {
             if (!validateForm()) return;
-            
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const message = document.getElementById('message').value.trim();
             const orderSummary = generateOrderSummary();
-            
             const whatsappMessage = `🐝 *Porosi nga Bletari "Deni"*\n\n*Emri:* ${name}\n*Email:* ${email}\n*Telefoni:* ${phone || 'Nuk është dhënë'}\n\n*Mesazhi:* ${message || 'Nuk ka mesazh shtesë'}${orderSummary}`;
-            
             const whatsappURL = `https://wa.me/355685255190?text=${encodeURIComponent(whatsappMessage)}`;
             window.open(whatsappURL, '_blank');
-            
             showMessage('successMessage', 'Po hapim WhatsApp për ju...');
         }
-
-        // Form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
             if (!validateForm()) return;
-            
             const submitBtn = document.getElementById('submitBtn');
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const message = document.getElementById('message').value.trim();
             const orderSummary = generateOrderSummary();
-            
             submitBtn.disabled = true;
             submitBtn.textContent = 'Duke dërguar...';
-            
             const fullMessage = `${message}${orderSummary}`;
             const mailtoLink = `mailto:bletarideni@gmail.com?subject=Porosi nga ${name}&body=Emri: ${name}%0D%0AEmail: ${email}%0D%0ATelefoni: ${phone}%0D%0A%0D%0AMesazhi:%0D%0A${encodeURIComponent(fullMessage)}`;
-            
             setTimeout(() => {
                 showMessage('successMessage', 'Porosia është përgatitur! Nëse nuk hapet email-i automatikisht, ju lutemi telefononi ose përdorni WhatsApp.');
                 window.location.href = mailtoLink;
-                
                 submitBtn.disabled = false;
                 submitBtn.textContent = '📧 Email';
-            }, 2000);
+            }, 1500);
         });
     </script>
 </body>
