@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bletaria "Zogu" - Mjaltë Natyral Premium</title>
+    <title>Bletari "Deni" - Mjaltë Natyral Premium</title>
     <style>
         * {
             margin: 0;
@@ -305,6 +305,7 @@
             background: rgba(255,255,255,0.1);
             border-radius: 10px;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         .contact-item:hover {
             background: rgba(255,255,255,0.2);
@@ -344,6 +345,75 @@
             height: 120px;
             resize: vertical;
         }
+        /* Order Form Specific Styles */
+        .order-section {
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+        }
+        .order-section h4 {
+            color: #f39c12;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        .product-selector {
+            display: grid;
+            grid-template-columns: 2fr 1fr auto;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        .quantity-input {
+            text-align: center;
+        }
+        .remove-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        .remove-btn:hover {
+            background: #c0392b;
+        }
+        .add-product-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+        .add-product-btn:hover {
+            background: #219a52;
+        }
+        .total-section {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        .total-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f39c12;
+            text-align: center;
+        }
+        .submit-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
         .submit-btn {
             background: #f39c12;
             color: white;
@@ -364,6 +434,37 @@
             background: #95a5a6;
             cursor: not-allowed;
             transform: none;
+        }
+        .whatsapp-btn {
+            background: #25d366;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .whatsapp-btn:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+        }
+        .order-summary {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        .order-summary h5 {
+            color: #f39c12;
+            margin-bottom: 0.5rem;
+        }
+        .order-summary-content {
+            font-size: 0.9rem;
+            line-height: 1.4;
         }
         /* Footer */
         footer {
@@ -424,13 +525,21 @@
             .products-grid {
                 grid-template-columns: 1fr;
             }
+            .product-selector {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                text-align: center;
+            }
+            .submit-options {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <nav class="container">
-            <a href="#" class="logo">🐝 Bletaria "Zogu"</a>
+            <a href="#" class="logo">🐝 Bletari "Deni"</a>
             <ul class="nav-links">
                 <li><a href="#home">Ballina</a></li>
                 <li><a href="#about">Rreth Nesh</a></li>
@@ -454,23 +563,23 @@
             <h2 class="section-title">Rreth Nesh</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Bletaria "Zogu" është një ndërmarrje familjare me traditë të gjatë në bletari. Për më shumë se 20 vjet, ne kemi qenë të përkushtuar ndaj artit të bletarisë dhe prodhimit të mjaltit të cilësisë së lartë.</p>
+                    <p>Bletari "Deni" është një ndërmarrje familjare me traditë të gjatë në bletari. Për më shumë se 30 vjet, ne kemi qenë të përkushtuar ndaj artit të bletarisë dhe prodhimit të mjaltit të cilësisë së lartë.</p>
                     
-                    <p>Ferma jonë ndodhet në një zonë të privilegjuar në Shqipëri, ku bletët tona ushqehen nga luledielli i egër dhe bimësia e pasur e maleve. Çdo kavanoz mjalti është dëshmi e angazhimit tonë ndaj cilësisë, pastërtisë dhe mirëqenies së bletëve tona të çmuara.</p>
+                    <p>Ferma jonë ndodhet në një zonë të privilegjuar në Shqipëri, ku bletët tona ushqehen nga bimësia e pasur e maleve. Çdo kavanoz mjalti është dëshmi e angazhimit tonë ndaj cilësisë, pastërtisë dhe mirëqenies së bletëve tona të çmuara.</p>
                     
                     <p>Ne zbatojmë praktika të qëndrueshme të bletarisë që respektojnë sjelljen natyrore të bletëve dhe prodhojnë mjaltë me shije unike që reflektojnë terroirin vendor.</p>
                 </div>
                 <div class="about-stats">
                     <div class="stat">
-                        <div class="stat-number">80+</div>
+                        <div class="stat-number">330+</div>
                         <div class="stat-label">Koshere Aktive</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">20+</div>
+                        <div class="stat-number">30+</div>
                         <div class="stat-label">Vite Përvojë</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">1500+</div>
+                        <div class="stat-number">3000+</div>
                         <div class="stat-label">Kg në Vit</div>
                     </div>
                     <div class="stat">
@@ -485,66 +594,8 @@
     <section id="products" class="products">
         <div class="container">
             <h2 class="section-title">Produktet Tona</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">🍯</div>
-                    <div class="product-info">
-                        <h3 class="product-title">Mjaltë Luledielli</h3>
-                        <p class="product-description">Mjalti ynë kryesor nga burime të ndryshme të luledielli të egër, me profil shijeje kompleks dhe të këndshëm.</p>
-                        <div class="product-price">800 Lekë / 450g</div>
-                        <button class="order-btn" onclick="orderProduct('Mjaltë Luledielli')">Porosit Tani</button>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">🌻</div>
-                    <div class="product-info">
-                        <h3 class="product-title">Mjaltë Lulediellit</h3>
-                        <p class="product-description">Mjaltë i lehtë, i artë me shije të butë dhe teksturë të lëmuar, i përsosur për përdorim të përditshëm.</p>
-                        <div class="product-price">900 Lekë / 450g</div>
-                        <button class="order-btn" onclick="orderProduct('Mjaltë Lulediellit')">Porosit Tani</button>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">🌿</div>
-                    <div class="product-info">
-                        <h3 class="product-title">Mjaltë Trifoje</h3>
-                        <p class="product-description">I ëmbël dhe delikat me notë lulore subtile, ideal për çaj dhe pjekje.</p>
-                        <div class="product-price">850 Lekë / 450g</div>
-                        <button class="order-btn" onclick="orderProduct('Mjaltë Trifoje')">Porosit Tani</button>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">🥜</div>
-                    <div class="product-info">
-                        <h3 class="product-title">Mjaltë Kastanje</h3>
-                        <p class="product-description">Mjaltë me ngjyrë të errët dhe shije të pasur, i përsosur për ata që preferojnë shije më intense.</p>
-                        <div class="product-price">1000 Lekë / 450g</div>
-                        <button class="order-btn" onclick="orderProduct('Mjaltë Kastanje')">Porosit Tani</button>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">🍯</div>
-                    <div class="product-info">
-                        <h3 class="product-title">Propolis</h3>
-                        <p class="product-description">Propolis natyral me veti terapeutike, i përdorur tradicionalisht për forcimin e imunitetit.</p>
-                        <div class="product-price">1200 Lekë / 30ml</div>
-                        <button class="order-btn" onclick="orderProduct('Propolis')">Porosit Tani</button>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">🎁</div>
-                    <div class="product-info">
-                        <h3 class="product-title">Set Dhuratë</h3>
-                        <p class="product-description">Paketë e bukur me përzgjedhjen e mjaltëve tona më të mirë, e përsosur për dhurimin.</p>
-                        <div class="product-price">2500 Lekë / Set</div>
-                        <button class="order-btn" onclick="orderProduct('Set Dhuratë')">Porosit Tani</button>
-                    </div>
-                </div>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically generated here -->
             </div>
         </div>
     </section>
@@ -555,26 +606,29 @@
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Informacione Kontakti</h3>
-                    <div class="contact-item">
+                    <div class="contact-item" onclick="openLocation()">
                         <span class="contact-icon">📍</span>
                         <div>
                             <strong>Adresa:</strong><br>
-                            Fshat [Emri i Fshatit]<br>
-                            Bashkia [Emri i Bashkisë], Shqipëri
+                            Fshat Valikardhë<br>
+                            Bashkia Bulqizë, Shqipëri<br>
+                            <small style="color: #f39c12;">Kliko për të hapur hartat</small>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item" onclick="callPhone('+355685255190')">
                         <span class="contact-icon">📞</span>
                         <div>
                             <strong>Telefoni:</strong><br>
-                            +355 69 XXX XXXX
+                            +355 68 52 55 190 / +355 68 26 02 943<br>
+                            <small style="color: #f39c12;">Kliko për të telefonuar</small>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item" onclick="sendEmail()">
                         <span class="contact-icon">📧</span>
                         <div>
                             <strong>Email:</strong><br>
-                            info@bletariazogu.al
+                            bletarideni@gmail.com<br>
+                            <small style="color: #f39c12;">Kliko për të dërguar email</small>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -589,40 +643,53 @@
                 </div>
                 <form class="contact-form" id="contactForm">
                     <div class="success-message" id="successMessage">
-                        Mesazhi juaj u dërgua me sukses! Do t'ju kontaktojmë së shpejti.
+                        Porosia juaj u dërgua me sukses! Do t'ju kontaktojmë së shpejti.
                     </div>
                     <div class="error-message" id="errorMessage">
-                        Ju lutemi plotësoni të gjitha fushat.
+                        Ju lutemi plotësoni të gjitha fushat e detyrueshme.
                     </div>
+                    
                     <div class="form-group">
-                        <label for="name">Emri</label>
+                        <label for="name">Emri *</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email">Email *</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Telefoni</label>
                         <input type="tel" id="phone" name="phone">
                     </div>
-                    <div class="form-group">
-                        <label for="product">Produkti që ju intereson</label>
-                        <select id="product" name="product">
-                            <option value="">Zgjidhni produktin</option>
-                            <option value="Mjaltë Luledielli">Mjaltë Luledielli</option>
-                            <option value="Mjaltë Lulediellit">Mjaltë Lulediellit</option>
-                            <option value="Mjaltë Trifoje">Mjaltë Trifoje</option>
-                            <option value="Mjaltë Kastanje">Mjaltë Kastanje</option>
-                            <option value="Propolis">Propolis</option>
-                            <option value="Set Dhuratë">Set Dhuratë</option>
-                        </select>
+                    
+                    <div class="order-section">
+                        <h4>Produktet që dëshironi të porositni</h4>
+                        <div id="productSelectors">
+                            <!-- Product selectors will be dynamically generated here -->
+                        </div>
+                        <button type="button" class="add-product-btn" onclick="addProduct()">+ Shto Produkt Tjetër</button>
+                        
+                        <div class="total-section">
+                            <div class="total-price">
+                                Totali: <span id="totalAmount">0</span> Lekë
+                            </div>
+                        </div>
+
+                        <div class="order-summary" id="orderSummary">
+                            <h5>Përmbledhje e Porosisë:</h5>
+                            <div class="order-summary-content" id="orderSummaryContent"></div>
+                        </div>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="message">Mesazhi</label>
-                        <textarea id="message" name="message" placeholder="Shkruani mesazhin tuaj këtu..." required></textarea>
+                        <label for="message">Mesazhi shtesë</label>
+                        <textarea id="message" name="message" placeholder="Shkruani ndonjë mesazh shtesë këtu..."></textarea>
                     </div>
-                    <button type="submit" class="submit-btn" id="submitBtn">Dërgo Mesazhin</button>
+                    
+                    <div class="submit-options">
+                        <button type="button" class="whatsapp-btn" id="whatsappBtn" onclick="sendWhatsApp()">📱 Dërgo në WhatsApp</button>
+                        <button type="submit" class="submit-btn" id="submitBtn">📧 Dërgo me Email</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -630,11 +697,119 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Bletaria "Zogu". Të gjitha të drejtat e rezervuara. | Bërë me 🍯 dhe dashuri</p>
+            <p>&copy; 2025 Bletari "Deni". Të gjitha të drejtat e rezervuara. | Bërë me 🍯 dhe dashuri</p>
         </div>
     </footer>
 
     <script>
+        // Centralized Product Data - Edit prices and details here
+        const PRODUCTS = [
+            {
+                name: 'Qumësht Blete',
+                price: 6000,
+                unit: '10g',
+                emoji: '🥛',
+                description: 'Qumësht blete i pastër me veti ushqyese të jashtëzakonshme, i pasur me vitamina dhe minerale.'
+            },
+            {
+                name: 'Mjaltë Shumëllojshmëri Lulesh',
+                price: 2000,
+                unit: '1000g',
+                emoji: '🍯',
+                description: 'Mjaltë i mbledhur nga lule të ndryshme, me shije komplekse dhe të pasur.'
+            },
+            {
+                name: 'Mjaltë Gështenje',
+                price: 2000,
+                unit: '1000g',
+                emoji: '🌰',
+                description: 'Mjaltë me ngjyrë të errët dhe shije të pasur, i përsosur për ata që preferojnë shije më intense.'
+            },
+            {
+                name: 'Mjaltë Trumëze',
+                price: 2000,
+                unit: '1000g',
+                emoji: '🌼',
+                description: 'Mjaltë delikat nga lulet e trumëzës, me shije të butë dhe aromë të këndshme.'
+            },
+            {
+                name: 'Polen',
+                price: 3000,
+                unit: '20ml',
+                emoji: '🌟',
+                description: 'Polen natyral i pasur me proteina, vitamina dhe minerale për forcimin e organizmit.'
+            },
+            {
+                name: 'Propolis',
+                price: 500,
+                unit: '500mg',
+                emoji: '💊',
+                description: 'Propolis natyral me veti terapeutike, i përdorur tradicionalisht për forcimin e imunitetit.'
+            }
+        ];
+
+        // Generate product prices object for easy access
+        const productPrices = {};
+        PRODUCTS.forEach(product => {
+            productPrices[product.name] = product.price;
+        });
+
+        // Generate Products Grid
+        function generateProductsGrid() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = PRODUCTS.map(product => `
+                <div class="product-card">
+                    <div class="product-image">${product.emoji}</div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-price">${product.price.toLocaleString()} Lekë / ${product.unit}</div>
+                        <button class="order-btn" onclick="orderProduct('${product.name}', ${product.price})">Porosit Tani</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Generate Product Selector Options
+        function generateProductOptions() {
+            return PRODUCTS.map(product => 
+                `<option value="${product.name}" data-price="${product.price}">${product.name} - ${product.price.toLocaleString()} Lekë</option>`
+            ).join('');
+        }
+
+        // Create Product Selector HTML
+        function createProductSelector() {
+            return `
+                <div class="product-selector">
+                    <select class="product-select" onchange="updateTotal()">
+                        <option value="">Zgjidhni produktin</option>
+                        ${generateProductOptions()}
+                    </select>
+                    <input type="number" class="quantity-input" min="1" value="1" onchange="updateTotal()" placeholder="Sasia">
+                    <button type="button" class="remove-btn" onclick="removeProduct(this)" style="display: none;">Hiq</button>
+                </div>
+            `;
+        }
+
+        // Initialize first product selector
+        function initializeProductSelectors() {
+            const container = document.getElementById('productSelectors');
+            container.innerHTML = createProductSelector();
+        }
+
+        // Contact functions
+        function openLocation() {
+            window.open('https://maps.app.goo.gl/87EaCDrAxoEDvSxe6', '_blank');
+        }
+
+        function callPhone(number) {
+            window.location.href = `tel:${number}`;
+        }
+
+        function sendEmail() {
+            window.location.href = 'mailto:bletarideni@gmail.com';
+        }
+
         // Mobile menu toggle
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
@@ -659,24 +834,176 @@
         });
 
         // Product order function
-        function orderProduct(productName) {
-            const productSelect = document.getElementById('product');
-            productSelect.value = productName;
-            
+        function orderProduct(productName, price) {
             // Scroll to contact form
             document.getElementById('contact').scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
             
-            // Focus on message field
+            // Add product to the first empty selector or create new one
             setTimeout(() => {
+                const selectors = document.querySelectorAll('.product-select');
+                let added = false;
+                
+                for (let selector of selectors) {
+                    if (!selector.value) {
+                        selector.value = productName;
+                        updateTotal();
+                        added = true;
+                        break;
+                    }
+                }
+                
+                if (!added) {
+                    addProduct();
+                    const newSelectors = document.querySelectorAll('.product-select');
+                    newSelectors[newSelectors.length - 1].value = productName;
+                    updateTotal();
+                }
+                
                 document.getElementById('message').focus();
-                document.getElementById('message').value = `Përshëndetje, jam i interesuar për produktin: ${productName}. Ju lutemi më jepni më shumë informacione dhe çmimet.`;
             }, 1000);
         }
 
-        // Form submission handler
+        // Add new product selector
+        function addProduct() {
+            const container = document.getElementById('productSelectors');
+            const newSelector = document.createElement('div');
+            newSelector.className = 'product-selector';
+            newSelector.innerHTML = `
+                <select class="product-select" onchange="updateTotal()">
+                    <option value="">Zgjidhni produktin</option>
+                    ${generateProductOptions()}
+                </select>
+                <input type="number" class="quantity-input" min="1" value="1" onchange="updateTotal()" placeholder="Sasia">
+                <button type="button" class="remove-btn" onclick="removeProduct(this)">Hiq</button>
+            `;
+            container.appendChild(newSelector);
+            updateRemoveButtons();
+        }
+
+        // Remove product selector
+        function removeProduct(button) {
+            button.parentElement.remove();
+            updateTotal();
+            updateRemoveButtons();
+        }
+
+        // Update remove buttons visibility
+        function updateRemoveButtons() {
+            const selectors = document.querySelectorAll('.product-selector');
+            selectors.forEach((selector, index) => {
+                const removeBtn = selector.querySelector('.remove-btn');
+                if (selectors.length > 1) {
+                    removeBtn.style.display = 'block';
+                } else {
+                    removeBtn.style.display = 'none';
+                }
+            });
+        }
+
+        // Update total price and order summary
+        function updateTotal() {
+            let total = 0;
+            const selectors = document.querySelectorAll('.product-selector');
+            let orderItems = [];
+            
+            selectors.forEach(selector => {
+                const productSelect = selector.querySelector('.product-select');
+                const quantityInput = selector.querySelector('.quantity-input');
+                
+                if (productSelect.value && quantityInput.value) {
+                    const price = productPrices[productSelect.value] || 0;
+                    const quantity = parseInt(quantityInput.value) || 0;
+                    const subtotal = price * quantity;
+                    total += subtotal;
+                    
+                    orderItems.push(`${productSelect.value} x ${quantity} = ${subtotal.toLocaleString()} Lekë`);
+                }
+            });
+            
+            document.getElementById('totalAmount').textContent = total.toLocaleString();
+            
+            // Update order summary
+            const orderSummary = document.getElementById('orderSummary');
+            const orderSummaryContent = document.getElementById('orderSummaryContent');
+            
+            if (orderItems.length > 0) {
+                orderSummaryContent.innerHTML = orderItems.join('<br>') + `<br><strong>TOTALI: ${total.toLocaleString()} Lekë</strong>`;
+                orderSummary.style.display = 'block';
+            } else {
+                orderSummary.style.display = 'none';
+            }
+        }
+
+        // Generate order summary for messages
+        function generateOrderSummary() {
+            const selectors = document.querySelectorAll('.product-selector');
+            let orderItems = [];
+            let total = 0;
+            
+            selectors.forEach(selector => {
+                const productSelect = selector.querySelector('.product-select');
+                const quantityInput = selector.querySelector('.quantity-input');
+                
+                if (productSelect.value && quantityInput.value) {
+                    const productName = productSelect.value;
+                    const quantity = parseInt(quantityInput.value);
+                    const price = productPrices[productName];
+                    const subtotal = price * quantity;
+                    
+                    orderItems.push(`${productName} x ${quantity} = ${subtotal.toLocaleString()} Lekë`);
+                    total += subtotal;
+                }
+            });
+            
+            if (orderItems.length === 0) {
+                return '';
+            }
+            
+            return `\n\nPOROSIA:\n${orderItems.join('\n')}\n\nTOTALI: ${total.toLocaleString()} Lekë`;
+        }
+
+        // Send WhatsApp message
+        function sendWhatsApp() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            if (!name || !email) {
+                const errorMessage = document.getElementById('errorMessage');
+                errorMessage.textContent = 'Ju lutemi plotësoni fushat e detyrueshme (Emri dhe Email).';
+                errorMessage.style.display = 'block';
+                setTimeout(() => errorMessage.style.display = 'none', 5000);
+                return;
+            }
+            
+            const orderSummary = generateOrderSummary();
+            if (!orderSummary) {
+                const errorMessage = document.getElementById('errorMessage');
+                errorMessage.textContent = 'Ju lutemi zgjidhni të paktën një produkt për t\'u porositur.';
+                errorMessage.style.display = 'block';
+                setTimeout(() => errorMessage.style.display = 'none', 5000);
+                return;
+            }
+            
+            const whatsappMessage = `🐝 *Porosi nga Bletari "Deni"*\n\n*Emri:* ${name}\n*Email:* ${email}\n*Telefoni:* ${phone || 'Nuk është dhënë'}\n\n*Mesazhi:* ${message || 'Nuk ka mesazh shtesë'}${orderSummary}`;
+            
+            const whatsappNumber = '355685255190'; // WhatsApp number
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            window.open(whatsappURL, '_blank');
+            
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.textContent = 'Po hapim WhatsApp për ju...';
+            successMessage.style.display = 'block';
+            setTimeout(() => successMessage.style.display = 'none', 5000);
+        }
+
+        // Form submission handler for email
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -684,7 +1011,6 @@
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
-            const product = document.getElementById('product').value;
             const message = document.getElementById('message').value.trim();
             
             const submitBtn = document.getElementById('submitBtn');
@@ -696,7 +1022,8 @@
             errorMessage.style.display = 'none';
             
             // Validate required fields
-            if (!name || !email || !message) {
+            if (!name || !email) {
+                errorMessage.textContent = 'Ju lutemi plotësoni fushat e detyrueshme (Emri dhe Email).';
                 errorMessage.style.display = 'block';
                 return;
             }
@@ -709,32 +1036,41 @@
                 return;
             }
             
+            // Check if at least one product is selected
+            const orderSummary = generateOrderSummary();
+            if (!orderSummary) {
+                errorMessage.textContent = 'Ju lutemi zgjidhni të paktën një produkt për t\'u porositur.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
             // Simulate form submission
             submitBtn.disabled = true;
             submitBtn.textContent = 'Duke dërguar...';
             
-            // Create mailto link as fallback
-            const mailtoLink = `mailto:info@bletariazogu.al?subject=Porosi nga ${name}&body=Emri: ${name}%0D%0AEmail: ${email}%0D%0ATelefoni: ${phone}%0D%0AProdukti: ${product}%0D%0A%0D%0AMesazhi:%0D%0A${message}`;
+            // Create order message
+            const fullMessage = `${message}${orderSummary}`;
+            
+            // Create mailto link
+            const mailtoLink = `mailto:bletarideni@gmail.com?subject=Porosi nga ${name}&body=Emri: ${name}%0D%0AEmail: ${email}%0D%0ATelefoni: ${phone}%0D%0A%0D%0AMesazhi:%0D%0A${encodeURIComponent(fullMessage)}`;
             
             setTimeout(() => {
-                // Show success message
+                // Show success message with instructions
+                successMessage.innerHTML = `
+                    <strong>Porosia është përgatitur!</strong><br>
+                    Nëse nuk hapet automatikisht email-i, ju lutemi:<br>
+                    1. Kopjoni këtë adresë: <strong>bletarideni@gmail.com</strong><br>
+                    2. Ose telefononi: <strong>+355 68 52 55 190</strong><br>
+                    3. Ose përdorni WhatsApp më lart
+                `;
                 successMessage.style.display = 'block';
                 
-                // Open mailto link
+                // Try to open mailto link
                 window.location.href = mailtoLink;
-                
-                // Reset form
-                this.reset();
                 
                 // Reset button
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Dërgo Mesazhin';
-                
-                // Scroll to success message
-                successMessage.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
-                });
+                submitBtn.textContent = '📧 Dërgo me Email';
             }, 2000);
         });
 
@@ -758,18 +1094,12 @@
             }
         });
 
-        // Add loading animation for product cards
-        window.addEventListener('load', function() {
-            const productCards = document.querySelectorAll('.product-card');
-            productCards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(30px)
-					card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                }, index * 200);
-            });
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            generateProductsGrid();
+            initializeProductSelectors();
+            updateRemoveButtons();
+            updateTotal();
         });
     </script>
 </body>
